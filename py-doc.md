@@ -4,7 +4,10 @@ title: Python
 permalink: /Python/
 ---
 
-# [function](https://function_link)
+Coming soon!
+
+
+<!-- # [function](https://function_link)
 ---
 
 Description. See [function_main.ipynb](https://function_main.ipynb) for a notebook of given examples. 
@@ -98,4 +101,4 @@ Data Types: (X, Y)
 
 [Issues](https://github.com/tulimid1/TASK/issues) and [Discussion](https://github.com/tulimid1/TASK/discussions).
 
-If you don't know how to use github (or don't want to), just send me an [email](mailto:tulimid@udel.edu). 
+If you don't know how to use github (or don't want to), just send me an [email](mailto:tulimid@udel.edu).  -->

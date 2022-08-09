@@ -4,100 +4,151 @@ title: MATLAB
 permalink: /MATLAB/
 ---
 
-# [function](https://function_link.com) 
+# [labelSubPlots](https://github.com/tulimid1/labelSubPlots/blob/main/labelSubPlots.m) 
 ---
 
-Description. See [function_main.mlx](https://function_main.mlx) for a notebook of given examples. 
+Assign a label to each of your subplots. See [UsinglabelSubPlots.m](https://github.com/tulimid1/labelSubPlots/blob/main/UsinglabelSubPlots.m) for a script of examples. 
 
 ## Syntax
 ---
-[outarg = function(inarg1, inarg2)](#a)
-
-[outarg = function(inarg1, inarg2, Name, Value)](#b)
+[labelHandles = labelSubPlots(Name, Value)](#a)
 
 ## Description
 ---
 ### A
-[outarg](#outarg) = function([inarg1](#inarg1), [inarg2](#inarg2)) returns a ... . [example](#example-1)
-
-### B
-[outarg](#outarg) = function([inarg1](#inarg1), [inarg2](#inarg2), [Name, Value)](#name-value-arguments) returns ... with additional options specified by one or more name-value pair arguments. For example, you can do this or that. [example](#example-2)
+[labelHandles](#labelHandles) = function([Name, Value)](#name-value-arguments) returns *n* text object with additional options specified by one or more name-value pair arguments. [examples](#examples)
 
 ## Examples 
 ---
 ### Example 1
-Description
+Create a 2x2 subplot figure with labels. 
 
-    CODE
+    figure();
+    x=linspace(0,2*pi);
+    for i = 1:4 
+        subplot(2,2,i)
+        plot(x,cos(x));
+    end
+    labelSubPlots();
     
-![fig1](/assets/fig1M.png)
+![fig1](/assets/ex1.png)
     
 ### Example 2
-Description
+Create a 2x2 subplot figure with 3 axes and labels. 
 
-    CODE
+    figure();
+    x=linspace(0,2*pi);
+    subplot(2,2,1)
+    plot(x,cos(x));
+    subplot(2,2,2)
+    plot(x,cos(x));
+    subplot(2,2,[3 4])
+    plot(x,cos(x));
+
+    labelSubPlots();
     
-![fig2](/assets/fig2M.png)
+![fig2](/assets/ex2.png)
 
-## Input Arguments
----
-### ```inarg1```
-Short description
+### Example 3
+Use number labels instead of default letters. 
 
-Long description
+    figure();
+    x=linspace(0,2*pi);
+    for i = 1:4 
+        subplot(2,2,i)
+        plot(x,cos(x));
+    end
+    labelSubPlots('assignments', ['1' '2' '3' '4']);
 
-Data Types: (X, Y)
+![fig3](/assets/ex3.png)
 
-### ```inarg2```
-Short description
+### Example 4 
+Change position of labels to be better. 
 
-Long description
+    figure();
+    x=linspace(0,2*pi);
+    for i = 1:4 
+        subplot(2,2,i)
+        plot(x,cos(x));
+    end
+    labelSubPlots('assignPosX', -0.2, 'assignPosY', 1.2);
 
-Data Types: (X, Y)
+![fig4](/assets/ex4.png)
+
+### Exmaple 5 
+Lower the labels on the y-axis and have different x-axis positions for each subplot. 
+
+    figure();
+    x=linspace(0,2*pi);
+    for i = 1:4 
+        subplot(2,2,i)
+        plot(x,cos(x));
+    end
+    labelSubPlots('assignPosY', 1, 'assignPosX', -0.2:0.1:0.1);
+
+![fig5](/assets/ex5.png)
 
 ### Name-Value Arguments
 
-Specified optional comma-separated pairs of ```Name,Value``` arguments. ```Name``` is the is the argument name and ```Value``` is the corresponding value. ```Name``` musta ppear inside single or double quotes. You can specify several name and value pair arguments in any order as ```Name1,Value1,...,NameN,ValueN```. 
+Specified optional comma-separated pairs of ```Name,Value``` arguments. ```Name``` is the is the argument name and ```Value``` is the corresponding value. ```Name``` must appear inside single or double quotes. You can specify several name and value pair arguments in any order as ```Name1,Value1,...,NameN,ValueN```. 
 
-**Example**: ```'name1', value1, 'name2', value2``` specifies blah blah blah.
+**Example**: ```'figH', gcf(), 'assignments', sprintf('%d', 1:4)``` specifies the current figure as the one to add numeric labels to.
 
-### ```name1```
-Short description (default=X)
+### ```figH```
+Figure handle (default=gcf())
 
-Long description
+Handle of the figure that has the subplots that get labeled. 
 
-Data Types: (X, Y)
+Data Types: (figure handle)
 
-### ```name2```
-Short description (default=X)
+### ```assignments```
+Text to assign each subplot (default='A':char('A'+numAxes-1))
 
-Long description
+Character array of label text. The function will iterate through this vector and assign it's elements to the labels. The function also appends a '.' after each element. 
 
-Data Types: (X, Y)
+Data Types: (character array)
+
+### ```assignPosX```
+Text x position. (default=0.05)
+
+X position of text in [normalized units](https://www.mathworks.com/help/matlab/ref/matlab.graphics.primitive.text-properties.html#:~:text=four%2Delement%20vector-,Units,-%E2%80%94%20Position%20and). 
+
+I take the conservative approach and default to values inside axes to allow users to have more control over code. 
+
+Data Types: (scalar, vector, numeric)
+
+### ```assignPosY```
+Text y position. (default=0.98)
+
+Y position of text in [normalized units](https://www.mathworks.com/help/matlab/ref/matlab.graphics.primitive.text-properties.html#:~:text=four%2Delement%20vector-,Units,-%E2%80%94%20Position%20and). 
+
+I take the conservative approach and default to values inside axes to allow users to have more control over code. 
+
+Data Types: (scalar, vector, numeric)
 
 ## Output
 ---
 
-## ```outarg```
-Short description
+## ```labelHandles```
+Text label handles.
 
-Long description
-
-Data Types: (X, Y)
+Handles of text objects. 
 
 ## More About 
 ---
 
+This code is meant to be flexible and basic. I did not want to try to find best placements for all configurations, but allow users to have more control over where they add their labels. 
+
 ## Tips 
 ---
 
-I would suggest adding both `function.m` and `functionSignatures.json` to a folder that is in your MATLAB path. The `function.m` contains the function and the `functionSignatures.json` will you give custom suggestions and code completion for when you call `function` in a script or notebook. 
+I would suggest adding both `labelSubPlots.m` and `functionSignatures.json` to a folder that is in your MATLAB path. The `labelSubPlots.m` contains the function and the `functionSignatures.json` will you give custom suggestions and code completion for when you call `labelSubPlots` in a script or notebook. 
 
 If you already have a `functionSignatures.json` file in your folder, just add the pertinent code to the original `functionSignatures.json`. 
 
 ## Issues and Discussion
 ---
 
-[Issues](https://github.com/tulimid1/TASK/issues) and [Discussion](https://github.com/tulimid1/TASK/discussions).
+[Issues](https://github.com/tulimid1/labelSubPlots/issues) and [Discussion](https://github.com/tulimid1/labelSubPlots/discussions).
 
 If you don't know how to use github (or don't want to), just send me an [email](mailto:tulimid@udel.edu). 
