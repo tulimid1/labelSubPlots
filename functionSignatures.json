@@ -1,0 +1,15 @@
+{
+  "_schemaVersion": "1.0.0",
+  
+  "labelSubPlots":
+  {
+   "inputs":
+   [
+      {"name":"figH", "kind":"namevalue", "type":["matlab.ui.Figure"], "purpose": "Figure handle (default: gcf())"},
+      {"name":"assignments", "kind":"namevalue", "type":["char"], "purpose":"Text for labels (default: capital alphabetic letters)"}, 
+      {"name":"assignPosX", "kind":"namevalue", "type":["numeric"], "purpose": "X position for label (default: 0.05)"},
+      {"name":"assignPosY", "kind":"namevalue", "type":["numeric"], "purpose": "Y position for label (default: 0.98)"}
+   ]
+  }
+
+}
