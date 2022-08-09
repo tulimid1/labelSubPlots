@@ -12,6 +12,7 @@ for i = 1:4
     plot(x,cos(x));
 end
 labelSubPlots();
+% auto_save('ex1'); 
 
 %% Example 2 
 % 2 x 2 subplot with 3 axes 
@@ -25,6 +26,7 @@ subplot(2,2,[3 4])
 plot(x,cos(x));
 
 labelSubPlots();
+% auto_save('ex1'); 
 
 %% Example 3 
 % number labels 
@@ -35,6 +37,7 @@ for i = 1:4
     plot(x,cos(x));
 end
 labelSubPlots('assignments', ['1' '2' '3' '4']);
+% auto_save('ex1'); 
 
 %% Example 4 
 % Better position for 2x2 grid 
@@ -45,6 +48,7 @@ for i = 1:4
     plot(x,cos(x));
 end
 labelSubPlots('assignPosX', -0.2, 'assignPosY', 1.2);
+% auto_save('ex1'); 
 
 %% Example 5 
 % Lower on y-axis, but separate x-axis positions 
@@ -55,3 +59,4 @@ for i = 1:4
     plot(x,cos(x));
 end
 labelSubPlots('assignPosY', 1, 'assignPosX', -0.2:0.1:0.1);
+% auto_save('ex1'); 
