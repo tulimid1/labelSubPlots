@@ -12,6 +12,7 @@ for i = 1:4
     plot(x,cos(x));
 end
 labelSubPlots();
+% darkBackground();
 % auto_save('ex1'); 
 
 %% Example 2 
@@ -26,6 +27,7 @@ subplot(2,2,[3 4])
 plot(x,cos(x));
 
 labelSubPlots();
+% darkBackground();
 % auto_save('ex2'); 
 
 %% Example 3 
@@ -37,6 +39,7 @@ for i = 1:4
     plot(x,cos(x));
 end
 labelSubPlots('assignments', ['1' '2' '3' '4']);
+% darkBackground();
 % auto_save('ex3'); 
 
 %% Example 4 
@@ -48,6 +51,7 @@ for i = 1:4
     plot(x,cos(x));
 end
 labelSubPlots('assignPosX', -0.2, 'assignPosY', 1.2);
+% darkBackground();
 % auto_save('ex4'); 
 
 %% Example 5 
@@ -59,4 +63,5 @@ for i = 1:4
     plot(x,cos(x));
 end
 labelSubPlots('assignPosY', 1, 'assignPosX', -0.2:0.1:0.1);
+% darkBackground();
 % auto_save('ex5'); 
