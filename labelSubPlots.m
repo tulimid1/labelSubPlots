@@ -59,9 +59,12 @@ end
 end
 
 function out = convertScalar2Vector(in, field, n)
+%% Set up 
 out=in;
-if any(strcmp(in, field))
-    paramIdx = find(strcmpi(in, field));
+isValidName = cellfun(@(x) strcmpi(x, field), in); 
+%% Check and manipulate 
+if any(isValidName)
+    paramIdx = find(isValidName);
     if isscalar(in{paramIdx+1})
         out{paramIdx+1} = repelem(in{paramIdx+1}, n);
     end
