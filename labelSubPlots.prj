@@ -7,7 +7,7 @@
     <param.summary>Label your subplots.</param.summary>
     <param.description>Give subplots label. Helpful for multipanel figures for scientific journals.</param.description>
     <param.screenshot />
-    <param.version>1.1</param.version>
+    <param.version>1.2</param.version>
     <param.output>${PROJECT_ROOT}/labelSubPlots.mltbx</param.output>
     <param.products.name />
     <param.products.id />
@@ -114,7 +114,6 @@
     </fileset.rootdir>
     <fileset.rootfiles>
       <file>${PROJECT_ROOT}/README.md</file>
-      <file>${PROJECT_ROOT}/UsinglabelSubPlots.asv</file>
       <file>${PROJECT_ROOT}/UsinglabelSubPlots.m</file>
       <file>${PROJECT_ROOT}/demos.xml</file>
       <file>${PROJECT_ROOT}/functionSignatures.json</file>

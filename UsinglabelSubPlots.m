@@ -38,7 +38,7 @@ for i = 1:4
     subplot(2,2,i)
     plot(x,cos(x));
 end
-labelSubPlots('assignments', ['1' '2' '3' '4']);
+labelSubPlots('assignments', {'1', '2', '3', '4'});
 % darkBackground();
 % auto_save('ex3'); 
 

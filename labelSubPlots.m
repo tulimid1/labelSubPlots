@@ -21,14 +21,15 @@ p = inputParser();
 fighandle = getFigureHandle(varargin);
 axs = flip(findobj(fighandle, 'type', 'axes'));
 nAxs = length(axs); 
-assignmentValidationFcn = @(x) any(ischar(x)) & length(x) == nAxs; 
+assignmentValidationFcn = @(x) any(cellfun(@(x) ischar(x), x)) & length(x) == nAxs; 
 positionValidationFcn = @(x) any(isreal(x)) & any(isnumeric(x)) & ...
     any(isfinite(x)) & any(~isnan(x)) & length(x)==nAxs;
 %% Parse
 % figure handle 
 addParameter(p, 'figH', gcf(), @(x) strcmpi(class(x), 'matlab.ui.Figure')); 
 % assignment 
-addParameter(p, 'assignments', 'A':char('A'+nAxs-1), assignmentValidationFcn);
+defaultLetters = sprintf(repmat('%c,', 1, nAxs), 'A':char('A,'+nAxs-1));
+addParameter(p, 'assignments', strsplit(defaultLetters(1:end-1),','), assignmentValidationFcn);
 % assignment positions
 varargin = convertScalar2Vector(varargin, 'assignPosX', nAxs);
 addParameter(p, 'assignPosX', repelem(0.05, nAxs), positionValidationFcn); 
@@ -61,10 +62,10 @@ end
 function out = convertScalar2Vector(in, field, n)
 %% Set up 
 out=in;
-isValidName = cellfun(@(x) strcmpi(x, field), in); 
+isValidName = cellfun(@(x) strcmpi(x, field), in(1:2:end-1)); 
 %% Check and manipulate 
 if any(isValidName)
-    paramIdx = find(isValidName);
+    paramIdx = find(kron(isValidName, [1 0]));
     if isscalar(in{paramIdx+1})
         out{paramIdx+1} = repelem(in{paramIdx+1}, n);
     end
