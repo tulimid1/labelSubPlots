@@ -58,7 +58,7 @@ Use number labels instead of default letters.
         subplot(2,2,i)
         plot(x,cos(x));
     end
-    labelSubPlots('assignments', ['1' '2' '3' '4']);
+    labelSubPlots('assignments', {'1' '2' '3' '4'});
 
 ![fig3](/assets/ex3.png)
 
@@ -104,7 +104,7 @@ Data Types: (figure handle)
 ### ```assignments```
 Text to assign each subplot (default='A':char('A'+numAxes-1))
 
-Character array of label text. The function will iterate through this vector and assign it's elements to the labels. The function also appends a '.' after each element. 
+Cell array of label text. The function will iterate through this vector and assign it's elements to the labels. The function also appends a '.' after each element. 
 
 Data Types: (character array)
 
